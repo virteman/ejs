@@ -158,6 +158,24 @@ ejs.filters.last = function(obj) {
 <% include foot %>
 ```
 
+## async functions call
+  
+  Make EJS can parse the async functions which could be called in template files. 
+  
+```html
+<div>
+<!--here user.checkOnline is not a sync function call -->
+<%: user.checkOnline(function() { %>
+    <span>online</span>
+<!--here <%+ means continue -->
+<%+ }).fail(function() {
+    <span>offline</span>
+<% }) %>
+</div>
+```
+
+
+
 ## client-side support
 
   include `./ejs.js` or `./ejs.min.js` and `require("ejs").compile(str)`.
